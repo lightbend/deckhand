@@ -1,0 +1,6 @@
+commonLabels:
+  variant: openshift
+bases:
+  - ../../base
+patches:
+  - image.yaml

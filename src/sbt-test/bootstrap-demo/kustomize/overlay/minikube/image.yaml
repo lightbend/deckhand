@@ -1,0 +1,11 @@
+apiVersion: "apps/v1beta2"
+kind: Deployment
+metadata:
+  name: "bootstrap-kapi-demo-v0-1-0"
+spec:
+  template:
+    spec:
+      containers:
+        - name: "bootstrap-kapi-demo"
+          image: "bootstrap-kapi-demo:0.1.0"
+          imagePullPolicy: "Never"

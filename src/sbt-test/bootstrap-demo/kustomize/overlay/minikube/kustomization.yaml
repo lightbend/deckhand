@@ -1,0 +1,6 @@
+commonLabels:
+  variant: minikube
+bases:
+  - ../../base
+patches:
+  - image.yaml

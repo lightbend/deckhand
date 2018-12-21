@@ -13,19 +13,29 @@ case class Kubectl(
   log: Logger) {
 
   /** calls kubectl apply */
-  def apply(args: String*): Unit              = command("apply", args: _*)
+  def applyCommand(args: String*): Unit = command("apply", args: _*)
+
+  /**
+   * calls kubectl apply with the input yaml string.
+   */
+  def apply(input: String, args: String*): Unit = {
+    IO.withTemporaryDirectory { dir =>
+      IO.write(dir / "temp.yaml", input)
+      applyCommand(s"""-f ${dir / "temp.yaml"}""" :: args.toList: _*)
+    }
+  }
 
   /** calls kubectl apply */
   def apply(in: File, args: String*): Unit =
-    command("apply", s"-f $in" :: args.toList: _*)
+    applyCommand(s"-f $in" :: args.toList: _*)
 
   /** calls kubectl apply */
-  def apply(in: Mustache, parameters: Map[String, _], args: String*): Unit = {
-    IO.withTemporaryDirectory { dir =>
-      in.renderAsFile(parameters, dir / "temp.yaml")
-      apply(dir / "temp.yaml", args: _*)
-    }
-  }
+  def apply(in: Mustache, parameters: Map[String, _], args: String*): Unit =
+    apply(in.render(parameters), args: _*)
+
+  /** calls kubectl apply */
+  def apply(in: Kustomize, args: String*): Unit =
+    apply(in.build, args: _*)
 
   /** calls kubectl get */
   def get(args: String*): Unit                = command("get", args: _*)

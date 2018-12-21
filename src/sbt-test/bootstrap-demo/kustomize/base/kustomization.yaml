@@ -1,0 +1,5 @@
+commonLabels:
+  # orchestration v1 uses appName as opposed to more standard app
+  appName: "bootstrap-kapi-demo"
+resources:
+  - akka-cluster.yaml
