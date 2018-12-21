@@ -17,6 +17,8 @@ For sbt 1.x add the following to `project/plugins.sbt`:
 addSbtPlugin("com.lightbend.rp" % "sbt-deckhand" % "X.Y.Z")
 ```
 
+See [releases](https://github.com/lightbend/deckhand/releases) for the latest release.
+
 Usage
 -----
 
