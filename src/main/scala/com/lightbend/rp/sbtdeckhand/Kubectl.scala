@@ -145,8 +145,8 @@ case class Kubectl(
   /**
    * waits numExpected number of pods to be running.
    */
-  def waitForPods(numExpected: Int): Unit =
-    waitForPods(numExpected, truePredicate)
+  def waitForPods(numExpected: Int, getArgs: String*): Unit =
+    waitForPods(numExpected, truePredicate, getArgs: _*)
 
   /**
    * waits numExpected number of pods to be running.
