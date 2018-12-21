@@ -8,7 +8,8 @@ ThisBuild / homepage := Some(url("https://www.lightbend.com/"))
 ThisBuild / developers := List(
   Developer("lightbend", "Lightbend", "", url("https://www.lightbend.com/"))
 )
-// ThisBuild / scmInfo := Some(ScmInfo(url("https://github.com/lightbend/sbt-deckhand"), "git@github.com:lightbend/sbt-deckhand.git"))
+ThisBuild / scmInfo := Some(ScmInfo(url("https://github.com/lightbend/deckhand"), "git@github.com:lightbend/deckhand.git"))
+ThisBuild / version := "0.1.0"
 
 lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)
